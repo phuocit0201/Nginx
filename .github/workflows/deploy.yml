@@ -16,11 +16,11 @@ jobs:
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
-        ssh-private-key: ${{ secrets.NGINX }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Staging Server
       run: |
-        ssh -o StrictHostKeyChecking=no phuoclh@20.2.86.218 << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_IP }} << 'EOF'
           cd /var/www/html/Nginx
           sudo git pull origin master
         EOF
