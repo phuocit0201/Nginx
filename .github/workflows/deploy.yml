@@ -1,0 +1,26 @@
+name: Deploy to Staging Server
+
+on:
+  push:
+    branches:
+      - master   # Hoặc nhánh bạn muốn sử dụng để trigger deploy, ví dụ 'develop'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.NGINX }}
+
+    - name: Deploy to Staging Server
+      run: |
+        ssh -o StrictHostKeyChecking=no phuoclh@20.2.86.218 << 'EOF'
+          cd /var/www/html/Nginx
+          sudo git pull origin master
+        EOF
