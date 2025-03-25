@@ -16,3 +16,4 @@ Route::get('/test-cicd3', [App\Http\Controllers\SendEmailQueue::class, 'index'])
 Route::get('/test-cicd4', [App\Http\Controllers\SendEmailQueue::class, 'index']);
 Route::get('/test-cicd5', [App\Http\Controllers\SendEmailQueue::class, 'index']);
 Route::get('/test-cicd6', [App\Http\Controllers\SendEmailQueue::class, 'index']);
+Route::get('/test-cicd7', [App\Http\Controllers\SendEmailQueue::class, 'index']);
