@@ -7,9 +7,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class SendEmailQueue extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        Request::ip();
+        dd($request->ip());
         return view('queue');
     }
 
