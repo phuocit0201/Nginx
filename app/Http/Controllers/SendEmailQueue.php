@@ -9,6 +9,7 @@ class SendEmailQueue extends Controller
 {
     public function index()
     {
+        Request::ip();
         return view('queue');
     }
 
